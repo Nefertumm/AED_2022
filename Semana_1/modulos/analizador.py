@@ -25,9 +25,8 @@ class AnalizadorTexto:
         for char in dep:
             temp = temp.replace(char, '')
         
-        temp.split(' ')
+        temp = temp.split(' ')
         temp = [c for c in temp if c.strip()]
-        print(temp)
         self.text = ' '.join(temp)
 
     def cantidad_palabras(self) -> int:
@@ -46,7 +45,7 @@ class AnalizadorTexto:
         if not palabra.strip():
             print('La palabra a buscar no debe ser un string vacio')
             return 0
-        return self.text.count('palabra')
+        return self.text.lower().count(palabra.lower())
 
     def __str__(self):
         return self.text

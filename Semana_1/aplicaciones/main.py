@@ -2,8 +2,9 @@
 # from modulos.estudiantes import Estudiante
 # from modulos.persona import PersonaAleatoria
 # from modulos.producto import Producto
-# from modulos.calculadoraimc import CalculadoraIMC
-from modulos.analizador import AnalizadorTexto
+from modulos.calculadoraimc import CalculadoraIMC
+# from modulos.analizador import AnalizadorTexto
+from modulos.conversor import ConversorTemperatura
 
 if __name__ == "__main__":
     # p1 = PersonaAleatoria()
@@ -32,11 +33,36 @@ if __name__ == "__main__":
     # print(p1)
     # p1.aplicar_descuento(50)
     # print(p1)
+    
+    check = False
+    while not check:
+        try:
+            peso = float(input('Ingrese peso: '))
+            altura = float(input('Ingrese altura: '))
+        except ValueError as e:
+            print(e)
+        else:
+            check = True
+            imc = CalculadoraIMC(peso, altura)
+            print(imc)
 
-    # imc = CalculadoraIMC(100, 1.8)
-    # print(imc)
-
-    analizador_texto = AnalizadorTexto('Hola como  :__  va l a banda')
-    print(analizador_texto)
-    analizador_texto.depurar_texto()
-    print(analizador_texto)
+    # analizador_texto = AnalizadorTexto('Hola como  :__  va l a banda')
+    # print(analizador_texto)
+    # analizador_texto.depurar_texto()
+    # print(analizador_texto)
+    
+    # check = False
+    # while not check:
+    #     try:
+    #         temperatura = float(input('Ingrese una temperatura: '))
+    #         desde_unidad = input('Ingrese una unidad: ')
+    #         a_unidad = input('Ingrese la unidad a la que quiere convertir: ')
+    #         conversor = ConversorTemperatura()
+    #         temp_conv = conversor.convertir_a(temperatura, desde_unidad, a_unidad)
+    #         print(temp_conv)
+    #     except ValueError as e:
+    #         print(e)
+    #     else:
+    #         check = True
+            
+            

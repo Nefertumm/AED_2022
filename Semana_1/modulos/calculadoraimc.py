@@ -1,12 +1,7 @@
-from multiprocessing.sharedctypes import Value
-
-
 class CalculadoraIMC:
     def __init__(self, peso: float, altura: float) -> None:
         self.peso = peso
         self.altura = altura
-
-        self.imc = self.peso / (self.altura ** 2)
 
     @property
     def peso(self) -> float:
@@ -19,13 +14,7 @@ class CalculadoraIMC:
         ----------
         new_peso : float
             numero flotante positivo no nulo, expresado en kilogramos
-        """
-        try:
-            new_peso = float(new_peso)
-        except ValueError:
-            print('El peso debe ser un número')
-            exit(-1)
-        
+        """        
         if new_peso <= 0:
             raise Exception('El peso no debe ser negativo o nulo')
         
@@ -43,26 +32,25 @@ class CalculadoraIMC:
         new_altura : float
             numero flotante positivo no nulo, expresado en metros
         """
-        try:
-            new_altura = float(new_altura)
-        except ValueError:
-            print('La altura debe ser un número')
-            exit(-1)
         
         if new_altura <= 0:
             raise Exception('La altura debe ser un número no nulo positivo')
 
         self._altura = new_altura
-
-    def __str__(self):
-        result = f'Tu IMC {self.imc:.2f} '
-        if self.imc <= 18.5:
+        
+    def calcular_imc(self):
+        imc = self.peso / (self.altura ** 2)
+        result = f'Tu IMC {imc:.2f} '
+        if imc <= 18.5:
             result += "está 'Debajo de lo normal'"
-        elif self.imc > 18.5 and self.imc <= 25:
+        elif imc > 18.5 and imc <= 25:
             result += "es 'Normal'"
-        elif self.imc > 25 and self.imc <= 30:
+        elif imc > 25 and imc <= 30:
             result += "indica 'Sobrepeso'"
         else:
             result += "indica 'Obesidad'"
         
         return result
+
+    def __str__(self):
+        return self.calcular_imc()
