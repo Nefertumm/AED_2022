@@ -3,7 +3,7 @@
 # from Semana_1.modulos.persona import PersonaAleatoria
 # from Semana_1.modulos.producto import Producto
 # from Semana_1.modulos.calculadoraimc import CalculadoraIMC
-from Semana_1.modulos.analizador import AnalizadorTexto
+# from Semana_1.modulos.analizador import AnalizadorTexto
 # from Semana_1.modulos.conversor import ConversorTemperatura
 
 import Utils.exceptions as cex
@@ -112,4 +112,5 @@ if __name__ == "__main__":
     #         print(err)
     #     else:
     #         check = True
-            
+    
+    pass
