@@ -1,5 +1,5 @@
 import unittest
-from modulos.calculadoraimc import CalculadoraIMC
+from Semana_1.modulos.calculadoraimc import CalculadoraIMC
 
 class TestCalculadora(unittest.TestCase):
     

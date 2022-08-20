@@ -1,3 +1,7 @@
+# Ejercicio 8
+
+import Utils.exceptions as cex
+
 class AnalizadorTexto:
     def __init__(self, text: str) -> None:
         self.text = text
@@ -13,8 +17,10 @@ class AnalizadorTexto:
         -------------
             new_text: str
         """
-        if type(new_text) != str:
-            raise Exception('El texto debe ser un string')
+        if not isinstance(new_text, str):
+            raise cex.ValueNotString(new_text, 'El texto debe ser un string')
+        if not new_text.strip():
+            raise cex.ValueEmptyString('El texto no puede ser solo caracteres vacíos.')
         
         self._text = new_text
 
@@ -23,7 +29,7 @@ class AnalizadorTexto:
         dep = [',', '.', ':', ';', '-', '_']
         temp = self.text
         for char in dep:
-            temp = temp.replace(char, '')
+            temp = temp.replace(char, ' ')
         
         temp = temp.split(' ')
         temp = [c for c in temp if c.strip()]
@@ -35,17 +41,10 @@ class AnalizadorTexto:
 
     def ocurrencia_palabra(self, palabra: str) -> int:
         """Devuelve la ocurrencia de la palabra en el texto"""
-        if type(palabra) != str:
-            print('La palabra a buscar debe ser un string')
-            try:
-                palabra = str(palabra)
-            except ValueError:
-                print('La palabra a buscar debe poder ser convertible a string')
-                exit(-1)
-        if not palabra.strip():
-            print('La palabra a buscar no debe ser un string vacio')
-            return 0
+        if not isinstance(palabra, str):
+            raise cex.ValueNotString(palabra, 'La palabra a buscar debe ser un string')
+
         return self.text.lower().count(palabra.lower())
 
     def __str__(self):
-        return self.text
+        return f'Text: {self.text} \n Cantidad de palabras: {self.cantidad_palabras()}'

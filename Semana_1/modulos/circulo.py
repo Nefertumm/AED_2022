@@ -30,6 +30,4 @@ class Circulo:
     def get_perimetro(self) -> float:
         """calcula y retorna el valor del perímetro con 2 decimales de precisión"""
         perimetro = 2*math.pi*self.get_radio()
-        return round(perimetro, 2)        
-
-
+        return round(perimetro, 2)

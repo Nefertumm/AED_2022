@@ -1,56 +1,102 @@
-# from modulos.circulo_decoradores import Circulo
-# from modulos.estudiantes import Estudiante
-# from modulos.persona import PersonaAleatoria
-# from modulos.producto import Producto
-from modulos.calculadoraimc import CalculadoraIMC
-# from modulos.analizador import AnalizadorTexto
-from modulos.conversor import ConversorTemperatura
+# from Semana_1.modulos.circulo_decoradores import Circulo
+# from Semana_1.modulos.estudiantes import Estudiante
+# from Semana_1.modulos.persona import PersonaAleatoria
+# from Semana_1.modulos.producto import Producto
+# from Semana_1.modulos.calculadoraimc import CalculadoraIMC
+from Semana_1.modulos.analizador import AnalizadorTexto
+# from Semana_1.modulos.conversor import ConversorTemperatura
+
+import Utils.exceptions as cex
 
 if __name__ == "__main__":
+    #template para check básico:
+    # check = False
+    # while not check:
+    #     try:
+    #         generic = input('Generic: ')
+    #     except ValueError:
+    #         print('El tipo de valor no es el correcto')
+    #     except (cex.ValueBelowZero, cex.ValueEqualsOrBelowZero, cex.ValueEmptyString, cex.ValueNotString, cex.ValueNotNumber) as err:
+    #         print(err)
+    #     else:
+    #         check = True
+    #         print('pass')
+
+    # --------------------------------
+    # Ejercicio 3 y 5
+
     # p1 = PersonaAleatoria()
     # print(p1.nombre, p1.apellido)
-    
-    # c1 = Circulo(5)
-    # print(c1.radio)
-    
-    # print(c1.area)
-    # print(c1.perimetro)
-    
-    # alumnosList = []
+
+    # --------------------------------
+    # Ejercicio 4
+
+    # estudiantesList = []
     # with open('alumnos.txt', 'r') as alumnos:
     #     for alumno in alumnos:
     #         legajo, apellido, nombre, doc, prom = alumno.split(',')
     #         estudiante = Estudiante(legajo, apellido, nombre, doc, prom)
-    #         alumnosList.append(estudiante)
+    #         estudiantesList.append(estudiante)
             
-    # for alumno in alumnosList:
-    #     print(f'Alumno: {alumno.apellido} {alumno.nombre} \n Legajo: {alumno.legajo} \n DNI: {alumno.documento} \n Promedio: {alumno.promedio}')
+    # for estudiante in estudiantesList:
+    #     print(f'Estudiante: {estudiante.apellido} {estudiante.nombre} \n Legajo: {estudiante.legajo} \n DNI: {estudiante.documento} \n Promedio: {estudiante.promedio}')
     
-    # est = Estudiante('kjf', 'Hola', 'Mundo', 123123123, 5.4)
-    # print(est)
+    # --------------------------------
+    # Ejercicio 6
     
-    # p1 = Producto('Hola', 0.5, 12)
-    # print(p1)
-    # p1.aplicar_descuento(50)
-    # print(p1)
-    
-    check = False
-    while not check:
-        try:
-            peso = float(input('Ingrese peso: '))
-            altura = float(input('Ingrese altura: '))
-        except ValueError as e:
-            print(e)
-        else:
-            check = True
-            imc = CalculadoraIMC(peso, altura)
-            print(imc)
+    # check = False
+    # while not check:
+    #     try:
+    #         nombre = input('Ingrese el nombre del producto: ')
+    #         precio = float(input('Ingrese el precio: '))
+    #         stock = int(input('Ingrese stock del producto: '))
+    #         p1 = Producto(nombre, precio, stock)
+    #     except ValueError:
+    #         print('El precio y el stock deben ser números')
+    #     except (cex.ValueBelowZero, cex.ValueEqualsOrBelowZero, cex.ValueEmptyString, cex.ValueNotString, cex.ValueNotNumber) as err:
+    #         print(err)
+    #     else:
+    #         check = True
+    #         print(p1)
 
-    # analizador_texto = AnalizadorTexto('Hola como  :__  va l a banda')
-    # print(analizador_texto)
-    # analizador_texto.depurar_texto()
-    # print(analizador_texto)
+    # --------------------------------
+    # Ejercicio 7
+
+    # check = False
+    # while not check:
+    #     try:
+    #         peso = float(input('Ingrese peso: '))
+    #         altura = float(input('Ingrese altura: '))
+    #     except ValueError:
+    #         print('El peso y la altura deben ser números')
+    #     except (cex.ValueBelowZero, cex.ValueEqualsOrBelowZero, cex.ValueEmptyString, cex.ValueNotString, cex.ValueNotNumber) as err:
+    #         print(err)
+    #     else:
+    #         check = True
+    #         imc = CalculadoraIMC(peso, altura)
+    #         print(imc)
+
+    # --------------------------------
+    # Ejercicio 8
+
+    # check = False
+    # while not check:
+    #     try:
+    #         text = input('Ingrese un texto: ')
+    #         analizador = AnalizadorTexto(text)
+    #         analizador.depurar_texto()
+    #         search_word = input('Ingrese una palabra a buscar: ')
+    #         count = analizador.ocurrencia_palabra(search_word)
+    #     except (ValueError, cex.ValueBelowZero, cex.ValueEqualsOrBelowZero, cex.ValueEmptyString, cex.ValueNotString, cex.ValueNotNumber) as err:
+    #         print(err)
+    #     else:
+    #         check = True
+    #         print(analizador)
+    #         print(f'Cantidad de ocurrencias de {search_word}: {count}.')
     
+    # --------------------------------
+    # Ejercicio 9
+
     # check = False
     # while not check:
     #     try:
@@ -60,9 +106,10 @@ if __name__ == "__main__":
     #         conversor = ConversorTemperatura()
     #         temp_conv = conversor.convertir_a(temperatura, desde_unidad, a_unidad)
     #         print(temp_conv)
-    #     except ValueError as e:
-    #         print(e)
+    #     except ValueError:
+    #         print('La temperatura no es número')
+    #     except (cex.ValueBelowZero, cex.ValueEqualsOrBelowZero, cex.ValueEmptyString, cex.ValueNotString, cex.ValueNotNumber) as err:
+    #         print(err)
     #     else:
     #         check = True
-            
             

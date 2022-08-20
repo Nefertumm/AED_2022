@@ -1,3 +1,7 @@
+# Ejercicio 6
+
+import Utils.exceptions as cex
+
 class Producto:
     def __init__(self, nombre: str, precio: float, cantidad: int) -> None:
         self.nombre = nombre
@@ -17,9 +21,9 @@ class Producto:
                 str no vacia
         """
         if type(new_nombre) != str:
-            raise Exception('El nombre del producto debe ser un string.')
+            raise cex.ValueNotString(new_nombre)
         if not new_nombre.strip():
-            raise Exception('El nombre no puede estar vacío.')
+            raise cex.ValueEmptyString('Nombre no puede ser nulo')
         self._nombre = new_nombre
     
     @property
@@ -34,13 +38,8 @@ class Producto:
             new_precio: float or int
                 flotante o entero positivo no nulo
         """
-        try:
-            new_precio = float(new_precio)
-        except ValueError:
-            print('El precio del producto debe ser un número')
-            exit(-1)
         if new_precio <= 0:
-            raise Exception('El precio no puede ser un número negativo')
+            raise cex.ValueBelowZero(new_precio)
 
         self._precio = new_precio
     
@@ -56,26 +55,17 @@ class Producto:
             new_cantidad: int
                 entero positivo no nulo
         """
-        try:
-            new_cantidad = int(new_cantidad)
-        except ValueError:
-            print('La cantidad debe ser un número')
-            exit(-1)
         if new_cantidad < 0:
-            raise Exception('La cantidad del producto no puede ser negativa')
+            raise cex.ValueBelowZero(new_cantidad)
         self._cantidad = new_cantidad
 
-    def aplicar_descuento(self, descuento : float) -> None:
+    def aplicar_descuento(self, descuento : float) -> float:
         """aplica un descuento sobre el precio del producto dado el valor porcentual"""
-        try:
-            descuento = float(descuento)
-        except ValueError:
-            print('El descuento a aplicar debe ser un número')
-            exit(-1)
         if (descuento <= 0):
-            raise Exception('No se puede aplicar un descuento negativo')
+            raise cex.ValueBelowZero(descuento)
         
         self.precio -= self.precio * descuento / 100
+        return self.precio
 
     def __str__(self):
         return f'Producto: {self.nombre} - ${self.precio} - Cantidad: {self.cantidad}'

@@ -1,3 +1,7 @@
+# Ejercicio 7
+
+import Utils.exceptions as cex
+
 class CalculadoraIMC:
     def __init__(self, peso: float, altura: float) -> None:
         self.peso = peso
@@ -16,7 +20,7 @@ class CalculadoraIMC:
             numero flotante positivo no nulo, expresado en kilogramos
         """        
         if new_peso <= 0:
-            raise Exception('El peso no debe ser negativo o nulo')
+            raise cex.ValueEqualsOrBelowZero(new_peso, 'El peso no debe ser negativo o nulo')
         
         self._peso = new_peso
 
@@ -34,7 +38,7 @@ class CalculadoraIMC:
         """
         
         if new_altura <= 0:
-            raise Exception('La altura debe ser un número no nulo positivo')
+            raise cex.ValueEqualsOrBelowZero(new_altura, 'La altura debe ser un número no nulo positivo')
 
         self._altura = new_altura
         

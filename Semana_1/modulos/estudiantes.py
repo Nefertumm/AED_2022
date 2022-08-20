@@ -1,5 +1,7 @@
 # Ejercicio 4
 
+import Utils.exceptions as cex
+
 class Estudiante:
     def __init__(self, legajo: int, apellido: str, nombre: str, documento: int, promedio: float) -> None:
         self.legajo = legajo
@@ -20,12 +22,12 @@ class Estudiante:
             new_legajo: int
                 entero positivo
         """
-        if type(new_legajo) != int:
-            raise Exception('El legajo debe ser un entero')
+        if not isinstance(new_legajo, cex.NumericNotComplex):
+            raise cex.ValueNotNumber(new_legajo, 'El legajo debe ser un número')
         if new_legajo <= 0:
-            raise Exception('No se permiten legajos en nulos o negativos')
+            raise cex.ValueEqualsOrBelowZero(new_legajo, 'El legajo debe ser un número positivo')
         
-        self._legajo = new_legajo
+        self._legajo = int(new_legajo)
         
     @property
     def apellido(self) -> str:
@@ -40,9 +42,10 @@ class Estudiante:
                 string no vacio
         """
         if type(new_apellido) != str:
-            raise Exception('El apellido debe ser un string')
+            raise cex.ValueNotString(new_apellido, 'El apellido debe ser un string')
         if not new_apellido.strip():
-            raise Exception('No se permite que el apellido sea nulo')
+            raise cex.ValueEmptyString(new_apellido.strip(), 'No se permite que el apellido sea nulo')
+        
         self._apellido = new_apellido
         
     @property
@@ -58,9 +61,9 @@ class Estudiante:
                 string no vacio
         """
         if type(new_nombre) != str:
-            raise Exception('El nombre debe ser un string')
+            raise cex.ValueNotString(new_nombre, 'El nombre debe ser un string')
         if not new_nombre.strip():
-            raise Exception('No se permite que el nombre sea nulo')
+            raise cex.ValueEmptyString(new_nombre.strip(), 'No se permite que el nombre sea nulo')
         self._nombre = new_nombre
         
     @property
@@ -76,9 +79,9 @@ class Estudiante:
                 entero positivo
         """
         if type(new_documento) != int:
-            raise Exception('El documento debe ser un entero')
+            raise cex.ValueNotNumber(new_documento, 'El documento debe ser un número')
         if new_documento <= 0:
-            raise Exception('No se permite que el documento sea nulo o negativo')
+            raise cex.ValueEqualsOrBelowZero(new_documento, 'No se permite que el documento sea nulo o negativo')
         self._documento = new_documento
         
     @property
@@ -93,11 +96,8 @@ class Estudiante:
             new_promedio: float/int
                 float o entero positivo
         """
-        if type(new_promedio) != float or type(new_promedio) != int:
-            raise Exception('El promedio debe ser un flotante o un entero')
+        if not isinstance(new_promedio, cex.NumericNotComplex):
+            raise cex.ValueNotNumber(new_promedio, 'El promedio debe ser un número')
         if new_promedio <= 0:
-            raise Exception('No se permite que el promedio sea nulo o negativo')
-        self._promedio = float(new_promedio) # cast en caso de entero
-        
-        
-        
+            raise cex.ValueEqualsOrBelowZero(new_promedio, 'No se permite que el promedio sea nulo o negativo')
+        self._promedio = float(new_promedio) # cast en caso de cualquier otra cosa que no sea entero

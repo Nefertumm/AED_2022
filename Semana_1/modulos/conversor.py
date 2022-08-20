@@ -1,3 +1,8 @@
+# Ejercicio 9
+
+from Utils.wrappers import time_profiler
+import Utils.exceptions as cex
+
 class ConversorTemperatura:
     def __init__(self) -> None:
         pass
@@ -20,6 +25,7 @@ class ConversorTemperatura:
         """Convertimos la temperatura a fahrenheit"""
         return temp_k * (9/5) - 459.67
         
+    @time_profiler
     def convertir_a(self, temperatura: float, desde_unidad: str, a_unidad: str) -> float:
         """Convierte la temperatura desde una unidad a otra"""
         desde_unidad = desde_unidad.upper().strip()
@@ -28,7 +34,7 @@ class ConversorTemperatura:
         unidades = ['C', 'K', 'F']
         
         if (temperatura < 0 and desde_unidad == 'K'):
-            raise ValueError('La temperatura se encuentra por debajo del cero absoluto.')
+            raise cex.ValueBelowZero(temperatura, 'La temperatura se encuentra por debajo del cero absoluto.')
         if not desde_unidad in unidades:
             raise ValueError('La unidad de entrada no es correcta')
         if not a_unidad in unidades:
@@ -44,4 +50,3 @@ class ConversorTemperatura:
                 return self.__convertir_a_celsius(temp_k)
             else:
                 return self.__convertir_a_fahrenheit(temp_k)
-        

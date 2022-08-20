@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Semana_1"
+    ]
+}
