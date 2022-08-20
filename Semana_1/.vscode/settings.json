@@ -1,7 +1,7 @@
 {
     "python.analysis.extraPaths": [
         "./modulos",
-        "./pruebas",
+        "./test",
         "./aplicaciones"
     ]
 }
