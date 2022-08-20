@@ -1,4 +1,6 @@
 # from Semana_1.modulos.circulo_decoradores import Circulo
+# from Semana_1.modulos.cuadrado import Cuadrado
+# from Semana_1.modulos.punto import Punto
 # from Semana_1.modulos.estudiantes import Estudiante
 # from Semana_1.modulos.persona import PersonaAleatoria
 # from Semana_1.modulos.producto import Producto
@@ -6,6 +8,7 @@
 # from Semana_1.modulos.analizador import AnalizadorTexto
 # from Semana_1.modulos.conversor import ConversorTemperatura
 
+from numbers import Number
 import Utils.exceptions as cex
 
 if __name__ == "__main__":
@@ -21,6 +24,38 @@ if __name__ == "__main__":
     #     else:
     #         check = True
     #         print('pass')
+
+    # --------------------------------
+    # Ejercicio 1
+
+    # check = False
+    # while not check:
+    #     try:
+    #         lado = float(input('Ingrese el lado del cuadrado: '))
+    #         c1 = Cuadrado(lado)
+    #     except (ValueError, cex.ValueNotNumber):
+    #         print('El tipo de valor no es el correcto')
+    #     except (cex.ValueBelowZero, cex.ValueEqualsOrBelowZero, cex.ValueEmptyString, cex.ValueNotString) as err:
+    #         print(err)
+    #     else:
+    #         check = True
+    #         print(c1)
+
+    # --------------------------------
+    # Ejercicio 2
+
+    # check = False
+    # while not check:
+    #     try:
+    #         x, y = input('Ingrese x e y separados por coma: ').split(',')
+    #         p1 = Punto(float(x), float(y))
+    #     except (ValueError, cex.ValueNotNumber):
+    #         print('El tipo de valor no es el correcto')
+    #     except (cex.ValueBelowZero, cex.ValueEqualsOrBelowZero, cex.ValueEmptyString, cex.ValueNotString) as err:
+    #         print(err)
+    #     else:
+    #         check = True
+    #         print(p1)
 
     # --------------------------------
     # Ejercicio 3 y 5
